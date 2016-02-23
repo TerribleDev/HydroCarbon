@@ -54,28 +54,28 @@ Array of light response file paths
 
 #### heatCommands
 
-Type: 'array'
+Type: `array`
 Default: `undefined`
 
 Array of command line args to pass to heat overrides heatFiles
 
 #### candleCommands
 
-Type: 'array'
+Type: `array`
 Default: `undefined`
 
 Array of command line args to pass to candle overrides candleFiles
 
 #### lightCommands
 
-Type: 'array'
+Type: `array`
 Default: `undefined`
 
 Array of command line args to pass to light overrides lightFiles
 
 #### version
 
-Type: 'string'
+Type: `string`
 Default: `undefined`
 
 Sets the BUILD_VERSION environment variable to version before calling heat, candle, and light
