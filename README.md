@@ -17,13 +17,12 @@ $ npm install --save-dev HydroCarbon
 var HydroCarbon = require('HydroCarbon');
 
 HydroCarbon.exec({
-  heatFiles: ["installers/heat-web.rsp"],
+  heatFiles: ["installers/heat.rsp"],
   candleFiles: ["installers/candle.rsp"],
   lightFiles: ["installers/light.rsp"]
 }, mycallbackFunction);
 ```
 
-```
 
 
 ## API
@@ -81,8 +80,6 @@ Default: `undefined`
 
 Sets the BUILD_VERSION environment variable to version before calling heat, candle, and light
 
-
-```
 
 
 ## License
