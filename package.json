@@ -1,17 +1,28 @@
 {
   "name": "HydroCarbon",
-  "version": "0.0.0",
-  "description": "HydroCarbon",
-  "main": "app.js",
-  "author": {
-    "name": "parne",
-    "email": ""
+  "description": "making windows installers great again",
+  "version": "0.1.0",
+  "main": "lib/index.js",
+  "author": "tparnell8",
+  "repository": "tparnell8/HydroCarbon",
+  "license": "MIT",
+  "scripts": {
+    "compile": "babel src --out-dir lib",
+    "coveralls": "cat ./coverage/lcov.info | coveralls",
+    "prepublish": "npm run compile",
+    "test": "babel-node ./node_modules/.bin/isparta cover _mocha"
   },
-  "dependencies": {
-    "underscore": "^1.8.3",
-    "when": "^3.7.7"
+    "dependencies": {
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
+    "babel-cli": "*",
+    "babel-preset-es2015-node4": "*",
+    "coveralls": "*",
+    "chai": "*",
+    "isparta": "*",
+    "mocha": "*",
+    "sinon": "*",
     "gulp": "^3.9.1",
     "gulp-unzip": "^0.1.3",
     "request": "^2.69.0"

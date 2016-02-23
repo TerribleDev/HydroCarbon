@@ -9,5 +9,5 @@ gulp.task('download', function () {
 gulp.task('getwix',['download'], function(){
   return gulp.src("wixToolset.zip")
    .pipe(unzip())
-   .pipe(gulp.dest('./wixFiles'));
+   .pipe(gulp.dest('./lib/wixFiles'));
 });
