@@ -7,14 +7,14 @@ simple wrapper over wix. You can see a working demo [here](https://github.com/tp
 ## Install
 
 ```
-$ npm install --save-dev HydroCarbon
+$ npm install --save-dev hydrocarbon
 ```
 
 
 ## Usage
 
 ```js
-var HydroCarbon = require('HydroCarbon');
+var HydroCarbon = require('hydrocarbon');
 
 HydroCarbon.exec({
   heatFiles: ["installers/heat.rsp"],

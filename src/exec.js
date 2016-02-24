@@ -75,7 +75,7 @@ var main = function (options, callback) {
 
       }
 
-          child_process.execFile(path.normalize(candlePath), candleCommands? candleCommands: _.map(candleFiles, (file)=>`@${path.normalize(file)}`), (err, stdout, stderr)=>{
+          return child_process.execFile(path.normalize(candlePath), candleCommands? candleCommands: _.map(candleFiles, (file)=>`@${path.normalize(file)}`), (err, stdout, stderr)=>{
             processResults(stdout, stderr);
             if(err){
               if(cb){
@@ -86,7 +86,7 @@ var main = function (options, callback) {
 
             }
 
-              child_process.execFile(path.normalize(lightPath), lightCommands? lightCommands: _.map(lightFiles, (file)=>`@${path.normalize(file)}`), (err, stdout, stderr)=>{
+              return child_process.execFile(path.normalize(lightPath), lightCommands? lightCommands: _.map(lightFiles, (file)=>`@${path.normalize(file)}`), (err, stdout, stderr)=>{
                 processResults(stdout, stderr);
                 if(err){
                   if(cb){
@@ -95,6 +95,9 @@ var main = function (options, callback) {
                     throw err;
                   }
 
+                }
+                if(cb){
+                  return cb();
                 }
 
               });
