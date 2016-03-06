@@ -3,7 +3,7 @@
 /* jshint -W097 */
 'use strict';
 var fs = require('fs'),
-    _ = require('underscore'),
+    _ = require('lodash'),
     path = require('path'),
     child_process = require('child_process');
 
