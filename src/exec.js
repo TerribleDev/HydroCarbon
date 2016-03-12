@@ -6,66 +6,46 @@ var fs = require('fs'),
     _ = require('lodash'),
     path = require('path'),
     commandBuilder = require('./CommandBuilder.js'),
-    spawn = require('child-process-promise').spawn;
-
-var processResults = function (stdout) {
-    if(stdout && _.isArray(stdout)){
-      _.chain(stdout)
-      .filter((item)=>item && item.length > 0)
-      .each((item)=>console.log(item))
-      .value();
-    }
-    else if(stdout && _.isString(stdout) && stdout.length > 0){
-      console.log(stdout);
-    }
-
-};
+    spawn = require('child-process-promise').spawn,
+    Q = require('q');
 
 var processError = function(err, cb){
-  console.log(err);
   if(cb && _.isFunction(cb) && err){
     cb(err)
   }
   else if(err){
-    throw err
+    throw err.message;
   }
 }
 
 var processConsole = function processConsole(childProcess) {
   if(childProcess && childProcess.stdout){
-    childProcess.stdout.on('data', (data)=>processResults(data.toString()));
+    childProcess.stdout.on('data', (data)=>console.log(data.toString()));
   }
   if(childProcess && childProcess.stderr){
-    childProcess.stderr.on('data', (data)=>processResults(data.toString()));
+    childProcess.stderr.on('data', (data)=>console.log(data.toString()));
   }
 
 };
 
 var main = function (options, callback) {
   var commands = commandBuilder(options);
+  var heat = null;
+  console.log(commands);
   //todo redo this a little...
   if(commands.heatCommands){
-    return spawn(commands.heatPath, commands.heatCommands)
-    .progress(processConsole)
-    .then(()=>spawn(commands.candlePath, commands.candleCommands))
-    .progress(processConsole)
-    .then(()=>spawn(commands.lightPath, commands.lightCommands))
-    .progress(processConsole)
-    .then(()=>{
-      if(callback && _.isFunction(callback)){
-        callback();
-      }
-    });
+    console.log(commands.heatPath, commands.heatCommands);
+    heat = spawn(commands.heatPath, commands.heatCommands)
+    .progress(processConsole);
   }
-  return spawn(commands.candlePath, commands.candleCommands)
-        .progress(processConsole)
-        .then(()=>spawn(commands.lightPath, commands.lightCommands))
-        .progress(processConsole)
-        .then(()=>{
-          if(callback && _.isFunction(callback)){
-            callback();
-          }
-        });
+  heat = heat || Q.Promise();
+
+  return  Q.all([heat])
+    .then(()=>spawn(commands.candlePath, commands.candleCommands), (err)=>processError(err, callback))
+    .progress(processConsole)
+    .then(()=>spawn(commands.lightPath, commands.lightCommands), (err)=>processError(err, callback))
+    .progress(processConsole)
+    .fail((err)=>processError(err, callback));
 };
 
 module.exports = main;

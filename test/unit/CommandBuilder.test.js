@@ -1,6 +1,6 @@
 var assert = require('chai').assert;
 var expect = require('chai').expect;
-var commandBuilder = require('../../src/CommandBuilder.js');
+var commandBuilder = require('../../src/CommandBuilder');
 
 
 describe('CommandBuilderWorks', function(){
@@ -104,6 +104,16 @@ describe('CommandBuilderWorks', function(){
     };
     var result = commandBuilder(testObject);
     expect(result.lightPath).to.eql("../awesome");
+  });
+  it('should suppress validations', function(){
+    var testObject = {
+      lightCommands: ['lightfile'],
+      candleCommands: ['candlefile'],
+      heatCommands: ['heatfile'],
+      suppressValidation: true
+    };
+  var result = commandBuilder(testObject);
+  expect(result.lightCommands).to.eql(['-sval', 'lightfile']);
   });
 
 });

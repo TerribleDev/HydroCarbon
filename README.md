@@ -80,6 +80,12 @@ Default: `undefined`
 
 Sets the BUILD_VERSION environment variable to version before calling heat, candle, and light
 
+#### suppressValidation
+
+Type: `bool`
+Default: `false`
+
+If true this will supress ICE validation checks during the linking process.
 
 
 ## License

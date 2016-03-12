@@ -9,6 +9,7 @@ var calculateCommands =  function(options){
     lightPath: options.lightPath || path.normalize(__dirname + "/wixFiles/light.exe"),
     candlePath: options.candlePath || path.normalize(__dirname + "/wixFiles/candle.exe")
   }
+
   if(options.version){
     process.env.BUILD_VERSION = version;
   }
@@ -39,6 +40,9 @@ var calculateCommands =  function(options){
         throw "light files are required if light commands are not specified";
     }
     commands.lightCommands = _.map(options.lightFiles, (file)=>`@${path.normalize(file)}`)
+  }
+  if(options.suppressValidation){
+    commands.lightCommands.unshift('-sval');
   }
   return commands;
 };
