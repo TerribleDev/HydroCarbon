@@ -3,12 +3,11 @@ var fs = require('fs'),
     _ = require('lodash'),
     path = require('path');
 
-
 var calculateCommands =  function(options){
   var commands = {
-    heatPath: options.heatPath || __dirname + "/wixFiles/heat.exe",
-    lightPath: options.lightPath || __dirname + "/wixFiles/light.exe",
-    candlePath: options.candlePath || __dirname + "/wixFiles/candle.exe"
+    heatPath: options.heatPath || path.normalize(__dirname + "/wixFiles/heat.exe"),
+    lightPath: options.lightPath || path.normalize(__dirname + "/wixFiles/light.exe"),
+    candlePath: options.candlePath || path.normalize(__dirname + "/wixFiles/candle.exe")
   }
   if(options.version){
     process.env.BUILD_VERSION = version;

@@ -1,6 +1,6 @@
 var assert = require('chai').assert;
 var expect = require('chai').expect;
-var commandBuilder = require('../../src/CommandBuilder');
+var commandBuilder = require('../../src/CommandBuilder.js');
 
 
 describe('CommandBuilderWorks', function(){

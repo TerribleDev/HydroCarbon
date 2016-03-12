@@ -9,9 +9,11 @@
   "scripts": {
     "compile": "babel src --out-dir lib",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
-    "prepublish": "npm run compile"
+    "prepublish": "npm run compile",
+    "test": "./node_modules/.bin/isparta cover node_modules/mocha/bin/_mocha"
   },
   "dependencies": {
+    "child-process-promise": "^1.1.0",
     "lodash": "^4.6.1"
   },
   "devDependencies": {
