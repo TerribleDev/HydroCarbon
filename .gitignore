@@ -1,1 +1,5 @@
 node_modules
+coverage
+wixToolset.zip
+output/
+test-tmp/

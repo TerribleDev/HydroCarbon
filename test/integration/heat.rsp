@@ -1,0 +1,7 @@
+dir test
+-nologo
+-cg files
+-gg -scom -sreg -sfrag -srd
+-dr INSTALLFOLDER
+-out output\test\installers\testfiles.gen.wxs
+-var var.SourceDir
