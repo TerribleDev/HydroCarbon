@@ -49,6 +49,7 @@ gulp.src('src/**/*.js')
 });
 
 gulp.task('coveralls', ['test'], function(){
+  process.env.COVERALLS_SERVICE_JOB_ID = process.env.APPVEYOR_BUILD_NUMBER
   gulp.src('coverage/**/lcov.info')
   .pipe(coveralls())
 });
