@@ -1,5 +1,5 @@
 ﻿# HydroCarbon
-[![NPM](https://img.shields.io/npm/v/gulp-msbuild.svg?style=flat-square)](https://www.npmjs.com/package/hydrocarbon)
+[![NPM](https://img.shields.io/npm/v/hydrocarbon.svg?style=flat-square)](https://www.npmjs.com/package/hydrocarbon)
 [![Coverage Status](https://coveralls.io/repos/github/tparnell8/HydroCarbon/badge.svg?branch=master)](https://coveralls.io/github/tparnell8/HydroCarbon?branch=master)
 [![Build status](https://ci.appveyor.com/api/projects/status/vekt2xrdn1iqjwxr/branch/master?svg=true)](https://ci.appveyor.com/project/tparnell8/hydrocarbon/branch/master)
 
