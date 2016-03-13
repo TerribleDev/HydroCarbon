@@ -26,11 +26,26 @@ HydroCarbon.exec({
 }, mycallbackFunction);
 ```
 
+or
 
+```js
+var HydroCarbon = require('hydrocarbon');
+
+HydroCarbon.exec({
+  heatFiles: ["installers/heat.rsp"],
+  candleFiles: ["installers/candle.rsp"],
+  lightFiles: ["installers/light.rsp"]
+})
+.then(()=>nextThingToDo());
+```
+
+Works great with gulp, or grunt. Build agnostic
 
 ## API
 
 ### HydroCarbon.Exec(options, callback)
+
+#### Returns a promise object
 
 #### options
 
