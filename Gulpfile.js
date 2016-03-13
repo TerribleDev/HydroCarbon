@@ -50,7 +50,7 @@ gulp.src('src/**/*.js')
 
 gulp.task('coveralls', ['test'], function(){
   process.env.COVERALLS_SERVICE_JOB_ID = process.env.APPVEYOR_BUILD_NUMBER;
-  process.env.COVERALLS_GIT_COMMIT = process.env.APPVEYOR_REPO_COMMIT;
+  process.env.COVERALLS_GIT_COMMIT = process.env.APPVEYOR_REPO_BRANCH;
   gulp.src('coverage/**/lcov.info')
   .pipe(coveralls())
 });
