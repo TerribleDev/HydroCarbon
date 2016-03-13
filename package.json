@@ -1,16 +1,15 @@
 {
   "name": "hydrocarbon",
   "description": "making windows installers great again",
-  "version": "0.1.2",
+  "version": "0.3.0",
   "main": "index.js",
   "author": "tparnell8",
-  "repository": "tparnell8/HydroCarbon",
+  "repository": "http://github.com/tparnell8/Hydrocarbon",
   "license": "MIT",
   "scripts": {
-    "compile": "babel src --out-dir lib",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
-    "prepublish": "npm run compile",
-    "test": "./node_modules/.bin/isparta cover node_modules/mocha/bin/_mocha"
+    "prepublish": "./node_modules/.bin/gulp getwix",
+    "test": "./node_modules/.bin/gulp test"
   },
   "dependencies": {
     "child-process-promise": "^1.1.0",
@@ -26,8 +25,10 @@
     "coveralls": "*",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
+    "gulp-coveralls": "^0.1.4",
     "gulp-istanbul": "^0.10.3",
     "gulp-mocha": "^2.2.0",
+    "gulp-tap": "^0.1.3",
     "gulp-unzip": "^0.1.3",
     "isparta": "^4.0.0",
     "jscover": "^1.0.0",

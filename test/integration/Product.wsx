@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     xmlns:iis="http://schemas.microsoft.com/wix/IIsExtension">
+	<Product Id="*"
+		Name="Tommy"
+		Language="1033"
+		Version="1.0.0"
+		Manufacturer="Tommy"
+		UpgradeCode="{aba1c34e-39c6-47cf-b50a-cae4e77f8204}">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+    <Media Id="1" Cabinet="product.cab" EmbedCab="yes" />
+
+		<!-- Allows our MSI to automatically uninstall any previously installed versions (makes it play nicer with puppet) -->
+		<Property Id="PREVIOUSVERSIONSINSTALLED" Secure="yes" />
+		<!-- Upgrade id has to match our upgrade code -->
+		<Upgrade Id="{aba1c34e-39c6-47cf-b50a-cae4e77f8204}">
+			<UpgradeVersion
+					Minimum="0.0.0.1" Maximum="99.0.0.0"
+					Property="PREVIOUSVERSIONINSTALLED"
+					IncludeMinimum="yes" IncludeMaximum="no" />
+		</Upgrade>
+		<!--
+				We need to be able to uninstall a newer version from an older version.
+				The default reinstallmode is "omus", of which the 'o' means "reinstall if missing or older"
+				The 'd' means "reinstall if different". This ensures that, at the individual component level, rollbacks work correctly.
+				See http://msdn.microsoft.com/en-us/library/windows/desktop/aa371182(v=vs.85).aspx
+			-->
+		<Property Id="REINSTALLMODE" Value="dmus" />
+
+        <Feature Id="TommysFiles" Title="TommysFiles">
+            <ComponentGroupRef Id="files" />
+            <ComponentRef Id='main' />
+        </Feature>
+	</Product>
+
+  <Fragment>
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+				<Directory Id="INSTALLFOLDER" Name="Test" />
+			</Directory>
+		</Directory>
+	</Fragment>
+
+  <Fragment>
+    <Component Directory="INSTALLFOLDER" Id="main" Guid="1330738a-9a86-41ed-a0de-68c55318612a"></Component>
+  </Fragment>
+
+  <Fragment>
+    <InstallExecuteSequence>
+      <RemoveExistingProducts After="InstallInitialize" />
+    </InstallExecuteSequence>
+    </Fragment>
+</Wix>

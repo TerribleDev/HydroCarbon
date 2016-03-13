@@ -1,0 +1,5 @@
+-dSourceDir=test
+-nologo
+-out output\test\installers\
+test\integration\Product.wsx
+output\test\installers\testfiles.gen.wxs

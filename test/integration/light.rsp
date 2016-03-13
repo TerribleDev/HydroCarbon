@@ -1,0 +1,8 @@
+-dSourceDir=test
+output\test\installers\testfiles.gen.wixobj
+output\test\installers\Product.wixobj
+-out output\test\installers\Web.msi
+-nologo
+-sw1076
+-sice:ICE80
+-sice:ICE18

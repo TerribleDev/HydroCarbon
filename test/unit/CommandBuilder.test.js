@@ -1,10 +1,10 @@
 var assert = require('chai').assert;
 var expect = require('chai').expect;
-var commandBuilder = require('../../src/CommandBuilder');
+
 
 
 describe('CommandBuilderWorks', function(){
-
+  var commandBuilder = require('../../test-tmp/CommandBuilder');
   it('Should not throw when files are passed in', function(){
     var testObject = {
       heatFiles: ['tst'],
