@@ -9,7 +9,7 @@
   "scripts": {
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "prepublish": "./node_modules/.bin/gulp getwix",
-    "test": "./node_modules/.bin/gulp test"
+    "test": "./node_modules/.bin/gulp coveralls"
   },
   "dependencies": {
     "child-process-promise": "^1.1.0",
