@@ -11,7 +11,7 @@ var calculateCommands =  function(options){
   }
 
   if(options.version){
-    process.env.BUILD_VERSION = version;
+    process.env.BUILD_VERSION = options.version;
   }
   if(options.heatCommands && _.isArray(options.heatCommands)){
     commands.heatCommands = options.heatCommands
